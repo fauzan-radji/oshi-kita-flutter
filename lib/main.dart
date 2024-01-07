@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oshi_kita/navigation/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,18 +18,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.red,
-          title: const Text(appName),
-        ),
-        body: const Center(
-          child: Text(
-            appName,
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-      ),
+      initialRoute: "/home",
+      routes: Routes.create(context)
     );
   }
 }
