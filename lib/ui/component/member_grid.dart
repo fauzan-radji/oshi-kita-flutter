@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oshi_kita/model/member.dart';
+import 'package:oshi_kita/navigation/routes.dart';
 import 'package:oshi_kita/ui/component/member_card.dart';
 
 class MemberGrid extends StatelessWidget {
@@ -12,8 +13,7 @@ class MemberGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.extent(
-      clipBehavior: Clip.antiAlias,
-      maxCrossAxisExtent: 300,
+      maxCrossAxisExtent: 200,
       padding: const EdgeInsets.all(12.0),
       crossAxisSpacing: 8,
       mainAxisSpacing: 8,
@@ -24,6 +24,9 @@ class MemberGrid extends StatelessWidget {
         name: member.name,
         generation: member.generation,
         isOshi: member.isOshi,
+        onTap: (id) {
+          Navigator.pushNamed(context, Routes.DETAIL, arguments: id);
+        },
       )).toList(),
     );
   }
