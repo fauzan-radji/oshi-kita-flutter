@@ -5,7 +5,7 @@ class Routes {
   static Map<String, WidgetBuilder> create(BuildContext context) {
     return {
       HOME: (context) {
-        return const Home();
+        return Home();
       }
     };
   }

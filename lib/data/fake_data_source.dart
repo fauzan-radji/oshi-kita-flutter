@@ -226,7 +226,7 @@ class FakeDataSource {
         fanbase: "Muffin",
         generation: 7,
         jiko: "Dengan kelincahanku, aku akan menari setiap hari. Panggil aku Mu Mu Mu Muthe!",
-        description: "Mutiara Azzahra Umandana, kerap disapa Muthe, lahir pada 12 Juli 2004 adalah anak kedua dari dua bersaudara. Muthe sudah berkeinginan menjadi anggota JKT48 sejak kecil dan pernah berfoto di Teater JKT48 ketika berumur delapan tahun.\n" + "\n" + "Di JKT48, Muthe rajin membuat vlog yang dikenal sebagai MuVlog dan beberapa video random. Muthe dan Angelina Christy memiliki kedekatan yang dikenal sebagai Musty. Muthe adalah anak dari Keluarga Cangcorang, yang terdiri dari Gita Sekar Andarini sebagai papa, Helisma Putri sebagai buna, Dhea Angelina sebagai tante dan sebagai tambahan Cindy Nugroho sebagai anak bungsu.",
+        description: "Mutiara Azzahra Umandana, kerap disapa Muthe, lahir pada 12 Juli 2004 adalah anak kedua dari dua bersaudara. Muthe sudah berkeinginan menjadi anggota JKT48 sejak kecil dan pernah berfoto di Teater JKT48 ketika berumur delapan tahun.\n\nDi JKT48, Muthe rajin membuat vlog yang dikenal sebagai MuVlog dan beberapa video random. Muthe dan Angelina Christy memiliki kedekatan yang dikenal sebagai Musty. Muthe adalah anak dari Keluarga Cangcorang, yang terdiri dari Gita Sekar Andarini sebagai papa, Helisma Putri sebagai buna, Dhea Angelina sebagai tante dan sebagai tambahan Cindy Nugroho sebagai anak bungsu.",
         photoUrl: "https://i.pinimg.com/736x/a8/d1/a7/a8d1a7f2d8cefc0a2bca619354e77fe2.jpg"
     ),
     // Raisha

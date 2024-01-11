@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:oshi_kita/data/fake_data_source.dart';
+import 'package:oshi_kita/model/member.dart';
+import 'package:oshi_kita/ui/component/member_grid.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  final List<Member> members = FakeDataSource.members;
+
+  Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +15,7 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.red,
         title: const Text("Home"),
       ),
-      body: const Center(
-        child: Text(
-          "Home",
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
+      body: MemberGrid(members: members),
     );
   }
 }
