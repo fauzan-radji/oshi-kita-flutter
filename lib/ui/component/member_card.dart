@@ -20,12 +20,12 @@ class MemberCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        onTap(id);
-      },
-      child: Card(
-        clipBehavior: Clip.antiAlias,
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      child: InkWell(
+        onTap: () {
+          onTap(id);
+        },
         child: Column(children: [
           Expanded(
             child: Image.network(
@@ -71,8 +71,8 @@ class MemberCard extends StatelessWidget {
                 icon: Icon(isOshi ? Icons.favorite : Icons.favorite_border)
             ),
           ),
-        ])
-      ),
+        ]),
+      )
     );
   }
 }
