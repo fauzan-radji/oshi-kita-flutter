@@ -1,24 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:oshi_kita/data/fake_data_source.dart';
 import 'package:oshi_kita/di/injection.dart';
 import 'package:oshi_kita/model/member.dart';
 import 'package:oshi_kita/ui/component/member_grid.dart';
+import 'package:oshi_kita/ui/component/search_bar.dart' as my;
 import 'package:oshi_kita/ui/screen/home/home_view_model.dart';
 
-class Home extends StatelessWidget {
-  final List<Member> members = FakeDataSource.members;
-  final viewModel = HomeViewModel(repository: Injection.provideRepository());
+class Home extends StatefulWidget {
 
-  Home({super.key});
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+  final viewModel = HomeViewModel(repository: Injection.provideRepository());
+  List<Member> _members = List.empty();
+
+  _HomeState() {
+    _members = viewModel.getFiltered("");
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: const Text("Home"),
+        title: Center(
+          child: my.SearchBar(onChanged: (value) {
+            setState(() {
+              _members = viewModel.getFiltered(value);
+            });
+          }),
+        ),
       ),
-      body: MemberGrid(members: viewModel.getAllMembers()),
+      body: MemberGrid(members: _members),
     );
   }
 }

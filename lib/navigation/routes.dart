@@ -6,7 +6,7 @@ class Routes {
   static Map<String, WidgetBuilder> create(BuildContext context) {
     return {
       HOME: (context) {
-        return Home();
+        return const Home();
       },
       DETAIL: (context) {
         final int id = ModalRoute.of(context)!.settings.arguments as int;

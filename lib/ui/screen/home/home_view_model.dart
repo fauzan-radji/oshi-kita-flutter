@@ -6,5 +6,5 @@ class HomeViewModel {
 
   const HomeViewModel({required this.repository});
 
-  List<Member> getAllMembers() => repository.getAllMembers();
+  List<Member> getFiltered(String query) => repository.getFiltered(query);
 }
