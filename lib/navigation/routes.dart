@@ -9,7 +9,7 @@ class Routes {
         return const Home();
       },
       DETAIL: (context) {
-        final int id = ModalRoute.of(context)!.settings.arguments as int;
+        final int id = ModalRoute.of(context)!.settings.arguments as int? ?? 1;
         return Detail(id: id);
       },
     };

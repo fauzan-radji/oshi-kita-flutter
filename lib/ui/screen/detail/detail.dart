@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:oshi_kita/di/injection.dart';
+import 'package:oshi_kita/ui/screen/detail/detail_large.dart';
+import 'package:oshi_kita/ui/screen/detail/detail_medium.dart';
+import 'package:oshi_kita/ui/screen/detail/detail_small.dart';
 import 'package:oshi_kita/ui/screen/detail/detail_view_model.dart';
 
 const baseFontSize = 16.25;
 const baseTextStyle = TextStyle(fontSize: baseFontSize);
 const spacer = SizedBox(height: 16.0, width: 16.0);
+
+enum Breakpoint {
+  medium(width: 500),
+  large(width: 740);
+
+  final int width;
+  const Breakpoint({required this.width});
+}
 
 class Detail extends StatelessWidget {
   final int id;
@@ -29,93 +40,24 @@ class Detail extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(18.0).copyWith(bottom: 80.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "JKT48 ${member.generation} Generation",
-                style: const TextStyle(
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.bold
-                ),
-              ),
-              spacer,
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Expanded(
-                    child: AspectRatio(
-                      aspectRatio: 2/3,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.network(
-                          member.photoUrl,
-                          fit: BoxFit.cover
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        const Title("Full Name"),
-                        Text(
-                          member.name,
-                          style: baseTextStyle
-                        ),
-
-                        spacer,
-
-                        const Title("Nicknames"),
-                        Text(
-                          member.nicknames.join(", "),
-                          style: baseTextStyle
-                        ),
-
-                        spacer,
-
-                        const Title("Fanbase"),
-                        Text(
-                          member.fanbase,
-                          style: baseTextStyle
-                        ),
-                      ]
-                    ),
-                  ),
-                ]
-              ),
-              spacer,
-              Text(
-                '"${member.jiko}"',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontStyle: FontStyle.italic,
-                  fontSize: 22.0,
-                )
-              ),
-              spacer,
-              Text(
-                member.description,
-                style: baseTextStyle
-              )
-            ]
-          ),
-        ),
-      ),
+      body: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+        if (constraints.maxWidth > Breakpoint.large.width) {
+          return DetailLarge(member: member);
+        } else if (constraints.maxWidth > Breakpoint.medium.width) {
+          return DetailMedium(member: member);
+        } else {
+          return DetailSmall(member: member);
+        }
+      }),
     );
   }
 }
 
-class Title extends StatelessWidget {
+class DetailTitle extends StatelessWidget {
   final String text;
   final TextStyle style;
 
-  const Title(
+  const DetailTitle(
       this.text, {
     super.key,
     this.style = const TextStyle(
