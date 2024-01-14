@@ -25,7 +25,7 @@ class MemberGrid extends StatelessWidget {
         generation: member.generation,
         isOshi: member.isOshi,
         onTap: (id) {
-          Navigator.pushNamed(context, Routes.DETAIL, arguments: id);
+          Navigator.pushNamed(context, Routes.detail, arguments: id);
         },
       )).toList(),
     );
